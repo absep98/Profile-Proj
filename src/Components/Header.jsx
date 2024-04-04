@@ -1,28 +1,31 @@
 import React, { useState } from 'react';
-import { IoMenuSharp } from "react-icons/io5";
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import HeaderComponent from './HeaderComponent';
+import MainCont from './MainCont';
+
+const AboutComponent = () => <h1>About Page</h1>;
+const ContactComponent = () => <h1>Contact Page</h1>;
 
 const Header = () => {
-    const [isHovered, setIsHovered] = useState(false);
-
-    return (
-        <div>
-            <div className="bg-cyan-100 h-16 w-full flex justify-end">
-                <div
-                    onMouseEnter={() => setIsHovered(true)}
-                    onMouseLeave={() => setIsHovered(false)}
-                >
-                    <IoMenuSharp size="2em" className="mr-8 mt-5 "/>  {/* replace with your actual icon */}
-                    {isHovered && (
-                        <nav className="absolute right-0 mt-2 py-2 w-48 bg-white rounded-lg shadow-xl">
-                            <a href="/home" className="block px-4 py-2 text-gray-800 hover:bg-indigo-500 hover:text-white">Home</a>
-                            <a href="/about" className="block px-4 py-2 text-gray-800 hover:bg-indigo-500 hover:text-white">About</a>
-                            <a href="/contact" className="block px-4 py-2 text-gray-800 hover:bg-indigo-500 hover:text-white">Contact</a>
-                        </nav>
-                    )}
-                </div>
-            </div>
-        </div>
-    )
+  const [isMainRen, setIsMain] = useState(false);
+  const HomeComponent = () => {
+    if(isMainRen) {
+      return null;
+    } else {
+      setIsMain(true);
+      return <MainCont />;
+    }
+  }
+  return (
+    <Router>
+      <HeaderComponent />
+      <Routes>
+        <Route path="/home" element={<HomeComponent />} />
+        <Route path="/about" element={<AboutComponent />} />
+        <Route path="/contact" element={<ContactComponent />} />
+      </Routes>
+    </Router>
+  );
 }
 
 export default Header;
