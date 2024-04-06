@@ -1,30 +1,26 @@
-import React, { useState } from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import HeaderComponent from './HeaderComponent';
-import MainCont from './MainCont';
-
-const AboutComponent = () => <h1>About Page</h1>;
-const ContactComponent = () => <h1>Contact Page</h1>;
+// Header.jsx
+import React from 'react';
+import { Link as ScrollLink } from 'react-scroll';
+import logo from '../Data/logo.png';
 
 const Header = () => {
-  const [isMainRen, setIsMain] = useState(false);
-  const HomeComponent = () => {
-    if(isMainRen) {
-      return null;
-    } else {
-      setIsMain(true);
-      return <MainCont />;
-    }
-  }
   return (
-    <Router>
-      <HeaderComponent />
-      <Routes>
-        <Route path="/home" element={<HomeComponent />} />
-        <Route path="/about" element={<AboutComponent />} />
-        <Route path="/contact" element={<ContactComponent />} />
-      </Routes>
-    </Router>
+    <div style={{ 
+        position: 'fixed', 
+        top: 0, 
+        width: '100%', 
+        backgroundColor: '#f8f9fa', 
+        zIndex: 1, 
+        display: 'flex', 
+        justifyContent: 'right', 
+        padding: '22px',
+        marginBottom: '10px',
+      }}>
+        <img src={logo} alt="Logo" style={{ position: 'fixed', top: 10, left: 10, width: '50px' }} />
+        <ScrollLink style={{ margin: '0 10px' }} to="/" smooth={true} offset={-50}>About me</ScrollLink>
+        <ScrollLink style={{ margin: '0 10px' }} to="contact" smooth={true} offset={-50}>Contacts</ScrollLink>
+        <ScrollLink style={{ margin: '0 10px' }} to="experience" smooth={true} offset={-50}>Experience</ScrollLink>
+      </div>
   );
 }
 

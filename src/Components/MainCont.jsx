@@ -5,7 +5,7 @@ import { IoMdCloudDownload } from "react-icons/io";
 const MainCont = () => {
   return (
     <>
-      <div className="h-[600px] w-full flex">
+      <div className="h-[600px] w-full flex ">
         <div className="firsthalf w-1/3 h-full m-8 relative"> {/* Change m-14 to m-8 here */}
           <img src={MyImage} className="w-[300px] border rounded-[20%] m-8 absolute top-0 left-[10%] opacity-100 hover:opacity-0 transition-opacity duration-500" /> {/* Change m-14 to m-8 here */}
           <img src={Pic} className="w-[300px] border rounded-[20%] m-8 absolute top-0 left-[10%] opacity-0 hover:opacity-100 transition-opacity duration-500" /> {/* Change m-14 to m-8 here */}
