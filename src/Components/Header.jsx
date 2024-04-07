@@ -9,7 +9,7 @@ const Header = () => {
         position: 'fixed', 
         top: 0, 
         width: '100%', 
-        backgroundColor: '#EEBC9F', 
+        backgroundColor: '#bad9f7', 
         zIndex: 1, 
         display: 'flex', 
         justifyContent: 'right', 
