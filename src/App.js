@@ -6,7 +6,7 @@ import MainCont from './Components/MainCont';
 import Contact from './Components/Contact';
 import Projects from './Components/Projects';
 import Experience from './Components/Experience';
-
+import Volunteer from './Components/Volunteer';
 const App = () => {
   return (
     <div style={{ backgroundColor: '#deeefc' }}>
@@ -16,6 +16,7 @@ const App = () => {
       <div id="experience"><Experience /></div>
       <div id="contact"><Contact /></div>
       <Projects />
+      <Volunteer />
     </div>
   );
 }
