@@ -9,7 +9,7 @@ import Experience from './Components/Experience';
 import Volunteer from './Components/Volunteer';
 const App = () => {
   return (
-    <div style={{ backgroundColor: '#deeefc' }}>
+    <div   className="font-poppins" style={{ backgroundColor: '#deeefc' }}>
       <Header />
       <Home />
       <div id="/"><MainCont /></div>
