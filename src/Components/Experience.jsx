@@ -34,7 +34,7 @@ const Experience = () => {
                 </div>
                 <div className="flex">
                     <div className="">
-                        <button id="tab-0" role="tab" tabIndex="0" aria-selected="true" aria-controls="panel-0" className="no-underline relative transition-all flex items-start w-full h-[480px] px-5 py-1 border-l-2 border-blue-200 bg-transparent text-green-500 font-mono text-xs text-left whitespace-nowrap">
+                        <button id="tab-0" role="tab" tabIndex="0" aria-selected="true" aria-controls="panel-0" className="no-underline relative transition-all flex items-start w-full h-[420px] px-5 py-1 border-l-2 border-blue-200 bg-transparent text-green-500 font-mono text-xs text-left whitespace-nowrap">
                             <span>Juniper Networks</span>
                         </button>
                     </div>

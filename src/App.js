@@ -15,7 +15,7 @@ const App = () => {
       <div id="/"><MainCont /></div>
       <div id="experience"><Experience /></div>
       <div id="contact"><Contact /></div>
-      <Projects />
+      <div id="projects"><Projects /></div>
       <Volunteer />
     </div>
   );

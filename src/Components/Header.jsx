@@ -19,7 +19,8 @@ const Header = () => {
         <img src={logo} alt="Logo" style={{ position: 'fixed', top: 10, left: 10, width: '50px' }} />
         <ScrollLink style={{ margin: '0 10px' }} to="/" smooth={true} offset={-50}>About me</ScrollLink>
         <ScrollLink style={{ margin: '0 10px' }} to="experience" smooth={true} offset={-50}>Experience</ScrollLink>
-        <ScrollLink style={{ margin: '0 10px' }} to="contact" smooth={true} offset={-50}>Contacts</ScrollLink>
+        <ScrollLink style={{ margin: '0 10px' }} to="contact" smooth={true} offset={-130}>Contacts</ScrollLink>
+        <ScrollLink style={{ margin: '0 10px' }} to="projects" smooth={true} offset={-50}>Projects</ScrollLink>
       </div>
   );
 }
