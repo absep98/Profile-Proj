@@ -7,6 +7,7 @@ import Contact from './Components/Contact';
 import Projects from './Components/Projects';
 import Experience from './Components/Experience';
 import Volunteer from './Components/Volunteer';
+import './App.css';
 const App = () => {
   return (
     <div   className="font-poppins" style={{ backgroundColor: '#deeefc' }}>

@@ -24,7 +24,7 @@ const MainCont = () => {
             <h2 className="mx-[200px]">Internship Completed</h2>
           </div>
           <div className="resume flex justify-end w-full mt-8">
-            <a href="./resume.pdf"download  onClick={incrementer}  className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-700 transition-colors duration-300 flex items-center"> {/* Add flex and items-center here */}
+            <a href="https://drive.google.com/file/d/1jIoSbuR9JC3SFgrXlih-y8GE2LT_H4wK/view" rel="noreferrer" target="_blank" onClick={incrementer}  className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-700 transition-colors duration-300 flex items-center"> {/* Add flex and items-center here */}
             <span className="mr-2">Download Resume</span><IoMdCloudDownload />
             </a>
             <p className='mt-2'>{counter}+ Downloads</p>
