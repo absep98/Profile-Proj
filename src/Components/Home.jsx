@@ -2,7 +2,7 @@ import React from 'react'
 
 function Home() {
   return (
-    <div className="font-poppins min-h-screen flex justify-center items-center px-4 sm:px-6 lg:px-8 mt-16 bg-gradient-to-b from-white to-blue-50 ">
+    <div className="font-poppins min-h-[calc(100vh-5rem)] flex justify-center items-center px-4 sm:px-6 lg:px-8 mt-8 bg-gradient-to-b from-white to-blue-50 ">
       <div className="max-w-4xl w-full space-y-8 p-4 sm:p-8 md:p-12 lg:p-16 relative">
         {/* Decorative elements */}
         <div className="absolute -z-10 top-0 right-0 w-72 h-72 bg-blue-100 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob"></div>

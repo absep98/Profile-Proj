@@ -19,6 +19,8 @@ const Header = () => {
           <ScrollLink className="scroll-link cursor-pointer" to="experience" smooth={true} offset={-50}>Experience</ScrollLink>
           <ScrollLink className="scroll-link cursor-pointer" to="contact" smooth={true} offset={-130}>Contacts</ScrollLink>
           <ScrollLink className="scroll-link cursor-pointer" to="projects" smooth={true} offset={-50}>Projects</ScrollLink>
+          <ScrollLink className="scroll-link cursor-pointer" to="skills" smooth={true} offset={-50}>Skills</ScrollLink>
+          <ScrollLink className="Scroll-link cursor-pointer" to="volunteer" smooth={true} offset={-50}>Volunteer</ScrollLink>
         </div>
 
         {/* Mobile menu button */}
