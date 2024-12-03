@@ -1,16 +1,28 @@
 import React, { useState } from 'react';
 import { Link as ScrollLink } from 'react-scroll';
 import logo from '../Data/logo.png';
+import { useTheme } from '../Components/Context/ThemeContext';
+import { FaSun, FaMoon } from 'react-icons/fa';
+
 
 const Header = () => {
   const [showLinks, setShowLinks] = useState(false);
-
+  const { theme, toggleTheme } = useTheme();
+  console.log(theme);
+  
   return (
     <header className='bg-gradient-to-r from-blue-500 to-indigo-900 text-white p-4'>
       <div className="container mx-auto flex justify-between items-center">
         <div className='flex items-center gap-3'>
           <img src={logo} alt="Logo" className='w-10 h-10' />
           <h1 className="text-white text-2xl">My Portfolio</h1>
+          <button
+          onClick={toggleTheme}
+          className="p-2 rounded-full bg-gray-200 dark:bg-gray-700"
+          aria-label="Toggle theme"
+          >
+            {theme === 'dark' ? <FaSun className="text-yellow-500" /> : <FaMoon className="text-blue-800" />}
+          </button>
         </div>
 
         {/* Desktop menu */}

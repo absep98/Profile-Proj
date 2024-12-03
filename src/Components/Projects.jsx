@@ -1,7 +1,9 @@
 import React from 'react'
 import { FaGithub, FaExternalLinkAlt } from "react-icons/fa"
+import { useTheme } from '../Components/Context/ThemeContext';
 
 const Projects = () => {
+  const {theme} = useTheme();
   const projects = [
     {
       title: "Expense Tracker Web App",
@@ -20,12 +22,18 @@ const Projects = () => {
   ];
 
   return (
-    <div className="min-h-screen py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-white to-blue-50">
+    <div className={`min-h-screen py-16 px-4 sm:px-6 lg:px-8 
+      ${theme === 'light' 
+        ? 'bg-gradient-to-b from-white to-blue-50' 
+        : 'bg-gradient-to-b from-gray-900 to-gray-800'}`}>
       <div className="max-w-6xl mx-auto">
         {/* Section Title */}
-        <h1 className="text-4xl md:text-5xl font-bold mb-16 text-center 
-                       bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-indigo-600 
-                       animate-fade-in-down">
+        <h1 className={`text-4xl md:text-5xl font-bold mb-16 text-center 
+          bg-clip-text text-transparent bg-gradient-to-r 
+          ${theme === 'light' 
+            ? 'from-blue-600 to-indigo-600' 
+            : 'from-blue-400 to-indigo-400'} 
+          animate-fade-in-down`}>
           Things I've built for fun and learning
         </h1>
 
@@ -34,26 +42,35 @@ const Projects = () => {
           {projects.map((project, index) => (
             <div 
               key={index}
-              className="group relative bg-white rounded-xl shadow-xl p-8 
-                         transform hover:scale-[1.02] transition-all duration-300
-                         hover:shadow-2xl"
+              className={`group relative rounded-xl p-8 
+                transform hover:scale-[1.02] transition-all duration-300
+                ${theme === 'light' 
+                  ? 'bg-white shadow-xl hover:shadow-2xl' 
+                  : 'bg-gray-800 shadow-lg shadow-gray-900/50 hover:shadow-xl hover:shadow-gray-900/50'}`}
             >
               {/* Decorative background elements */}
-              <div className="absolute -z-10 top-0 right-0 w-72 h-72 bg-blue-100 
-                            rounded-full mix-blend-multiply filter blur-xl opacity-70 
-                            animate-blob animation-delay-2000"></div>
+              <div className={`absolute -z-10 top-0 right-0 w-72 h-72 
+                ${theme === 'light' ? 'bg-blue-100' : 'bg-gray-700'} 
+                rounded-full mix-blend-multiply filter blur-xl opacity-70 
+                animate-blob animation-delay-2000`}>
+              </div>
 
               <div className="relative z-10">
                 {/* Project Title */}
-                <h2 className="text-2xl md:text-3xl font-bold mb-4 
-                              text-gray-800 group-hover:text-blue-600 
-                              transition-colors duration-300">
+                <h2 className={`text-2xl md:text-3xl font-bold mb-4 
+                  ${theme === 'light'
+                    ? 'text-gray-800 group-hover:text-blue-600' 
+                    : 'text-gray-200 group-hover:text-blue-400'} 
+                  transition-colors duration-300`}>
                   {project.title}
                 </h2>
 
                 {/* Project Description */}
-                <div className="backdrop-blur-sm bg-white/50 rounded-lg p-6 mb-6">
-                  <p className="text-gray-700 leading-relaxed">
+                <div className={`backdrop-blur-sm rounded-lg p-6 mb-6 
+                  ${theme === 'light' 
+                    ? 'bg-white/50' 
+                    : 'bg-gray-800/50'}`}>
+                  <p className={theme === 'light' ? 'text-gray-700' : 'text-gray-300'}>
                     {project.description}
                   </p>
                 </div>
@@ -63,9 +80,11 @@ const Projects = () => {
                   {project.tech.map((tech, techIndex) => (
                     <span 
                       key={techIndex}
-                      className="px-3 py-1 text-sm font-mono text-blue-600 
-                                bg-blue-50 rounded-full
-                                transform hover:scale-110 transition-transform duration-200"
+                      className={`px-3 py-1 text-sm font-mono rounded-full
+                        transform hover:scale-110 transition-transform duration-200
+                        ${theme === 'light'
+                          ? 'text-blue-600 bg-blue-50' 
+                          : 'text-blue-400 bg-gray-700'}`}
                     >
                       {tech}
                     </span>
@@ -78,8 +97,10 @@ const Projects = () => {
                     href={project.github}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-2 text-gray-600 hover:text-blue-600 
-                              transition-colors duration-300"
+                    className={`flex items-center gap-2 transition-colors duration-300
+                      ${theme === 'light'
+                        ? 'text-gray-600 hover:text-blue-600' 
+                        : 'text-gray-400 hover:text-blue-400'}`}
                   >
                     <FaGithub className="text-xl" />
                     <span>Code</span>
@@ -88,8 +109,10 @@ const Projects = () => {
                     href={project.live}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-2 text-gray-600 hover:text-blue-600 
-                              transition-colors duration-300"
+                    className={`flex items-center gap-2 transition-colors duration-300
+                      ${theme === 'light'
+                        ? 'text-gray-600 hover:text-blue-600' 
+                        : 'text-gray-400 hover:text-blue-400'}`}
                   >
                     <FaExternalLinkAlt className="text-lg" />
                     <span>Live Demo</span>

@@ -1,8 +1,10 @@
 import React, { useState } from 'react'
 import { HiChevronRight } from 'react-icons/hi'
+import { useTheme } from '../Components/Context/ThemeContext';
 
 const Experience = () => {
     const [activeTab, setActiveTab] = useState('citrix');
+    const { theme } = useTheme();
 
     const experiences = {
         citrix: {
@@ -37,11 +39,16 @@ const Experience = () => {
     };
 
     return (
-        <div className="min-h-screen py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-white to-blue-50">
+        <div className={`min-h-screen py-16 px-4 sm:px-6 lg:px-8 
+            ${theme === 'light' 
+                ? 'bg-gradient-to-b from-white to-blue-50' 
+                : 'bg-gradient-to-b from-gray-900 to-gray-800'}`}>
             <div className="max-w-6xl mx-auto">
                 {/* Section Title */}
-                <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center bg-clip-text text-transparent 
-                             bg-gradient-to-r from-blue-600 to-indigo-600 animate-fade-in-down">
+                <h2 className={`text-3xl md:text-4xl font-bold mb-12 text-center bg-clip-text text-transparent 
+                    bg-gradient-to-r ${theme === 'light' 
+                        ? 'from-blue-600 to-indigo-600' 
+                        : 'from-blue-400 to-indigo-400'} animate-fade-in-down`}>
                     Where I've Worked
                 </h2>
 
@@ -54,10 +61,17 @@ const Experience = () => {
                                 key={key}
                                 onClick={() => setActiveTab(key)}
                                 className={`px-4 py-3 text-left font-mono text-sm whitespace-nowrap transition-all duration-300
-                                          hover:bg-blue-50 hover:text-blue-600 relative
-                                          ${activeTab === key 
+                                    ${theme === 'light' 
+                                        ? 'hover:bg-blue-50 hover:text-blue-600' 
+                                        : 'hover:bg-gray-800 hover:text-blue-400'} 
+                                    relative
+                                    ${activeTab === key 
+                                        ? theme === 'light'
                                             ? 'text-blue-600 border-b-2 md:border-b-0 md:border-l-2 border-blue-600 bg-blue-50' 
-                                            : 'text-gray-600 border-b-2 md:border-b-0 md:border-l-2 border-gray-200'}`}
+                                            : 'text-blue-400 border-b-2 md:border-b-0 md:border-l-2 border-blue-400 bg-gray-800'
+                                        : theme === 'light'
+                                            ? 'text-gray-600 border-b-2 md:border-b-0 md:border-l-2 border-gray-200'
+                                            : 'text-gray-400 border-b-2 md:border-b-0 md:border-l-2 border-gray-700'}`}
                             >
                                 {value.company}
                             </button>
@@ -67,23 +81,28 @@ const Experience = () => {
                     {/* Content */}
                     <div className="md:w-3/4">
                         <div className="transform transition-all duration-300 hover:scale-[1.01]">
-                            <h3 className="text-xl md:text-2xl font-bold text-gray-800 mb-1">
+                            <h3 className={`text-xl md:text-2xl font-bold mb-1 
+                                ${theme === 'light' ? 'text-gray-800' : 'text-gray-200'}`}>
                                 {experiences[activeTab].title}
                             </h3>
-                            <h4 className="text-lg text-blue-600 mb-4 font-mono">
+                            <h4 className={`text-lg mb-4 font-mono 
+                                ${theme === 'light' ? 'text-blue-600' : 'text-blue-400'}`}>
                                 {experiences[activeTab].company}
                             </h4>
-                            <p className="text-gray-600 mb-4 font-mono">
+                            <p className={`mb-4 font-mono 
+                                ${theme === 'light' ? 'text-gray-600' : 'text-gray-400'}`}>
                                 {experiences[activeTab].period}
                             </p>
                             <ul className="space-y-4">
                                 {experiences[activeTab].duties.map((duty, index) => (
                                     <li key={index} 
                                         className="flex gap-2 group transform transition-all duration-300 hover:translate-x-2">
-                                        <span className="text-blue-500 mt-1.5">
-                                            <HiChevronRight className="transform group-hover:translate-x-1 transition-transform" />
+                                        <span className={theme === 'light' ? 'text-blue-500' : 'text-blue-400'}>
+                                            <HiChevronRight className="transform group-hover:translate-x-1 transition-transform mt-1.5" />
                                         </span>
-                                        <span className="text-gray-700">{duty}</span>
+                                        <span className={theme === 'light' ? 'text-gray-700' : 'text-gray-300'}>
+                                            {duty}
+                                        </span>
                                     </li>
                                 ))}
                             </ul>
