@@ -34,7 +34,7 @@ const Contact = () => {
     ];
 
     return (
-        <div className={`min-h-screen py-16 px-4 sm:px-6 lg:px-8 
+        <div className={`min-h-[calc(100vh-1rem)] py-16 px-4 sm:px-6 lg:px-8 
             ${theme === 'light' 
                 ? 'bg-gradient-to-b from-blue-50 to-white' 
                 : 'bg-gradient-to-b from-gray-900 to-gray-800'}`}>

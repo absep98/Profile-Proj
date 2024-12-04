@@ -5,7 +5,7 @@ function Home() {
   const { theme } = useTheme();
 
   return (
-    <div className={`font-poppins min-h-[calc(100vh-8rem)] flex justify-center items-center px-4 sm:px-6 lg:px-8 mt-8 ${theme === 'light' ? 'bg-gradient-to-b from-white to-blue-100' : 'bg-gradient-to-b from-gray-900 to-gray-800'}`}>
+    <div className={`font-poppins min-h-[calc(100vh-6rem)] flex justify-center items-center px-4 sm:px-6 lg:px-8 mt-8 ${theme === 'light' ? 'bg-gradient-to-b from-white to-blue-200' : 'bg-gradient-to-b from-gray-900 to-gray-800'}`}>
       <div className="max-w-4xl w-full space-y-8 p-4 sm:p-8 md:p-12 lg:p-16 relative">
         {/* Decorative elements */}
         <div className={`absolute -z-10 top-0 right-0 w-72 h-72 ${theme === 'light' ? 'bg-blue-100' : 'bg-gray-700'} rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob`}></div>

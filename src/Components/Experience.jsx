@@ -39,7 +39,7 @@ const Experience = () => {
     };
 
     return (
-        <div className={`min-h-screen py-16 px-4 sm:px-6 lg:px-8 
+        <div className={`min-h-[calc(100vh-7rem)] py-16 px-4 sm:px-6 lg:px-8 
             ${theme === 'light' 
                 ? 'bg-gradient-to-b from-white to-blue-50' 
                 : 'bg-gradient-to-b from-gray-900 to-gray-800'}`}>
