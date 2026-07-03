@@ -1,116 +1,105 @@
 import React from 'react'
-import { FaGithub, FaLinkedin, FaInstagramSquare } from "react-icons/fa";
-import { FaSquareXTwitter } from "react-icons/fa6";
-import { useTheme } from '../Components/Context/ThemeContext';
+import { FaGithub, FaLinkedin, FaArrowAltCircleUp, FaDev } from "react-icons/fa";
+import { SiHashnode, SiSubstack } from "react-icons/si";
+import { Reveal, SectionHeading } from './Shared';
+
+const socialLinks = [
+    {
+        name: 'GitHub',
+        icon: <FaGithub size={24} />,
+        url: 'https://github.com/absep98',
+    },
+    {
+        name: 'LinkedIn',
+        icon: <FaLinkedin size={24} />,
+        url: 'https://www.linkedin.com/in/abhishek-sharma-688566151/',
+    },
+    {
+        name: 'Hashnode',
+        icon: <SiHashnode size={24} />,
+        url: 'https://abhishekshr.hashnode.dev/',
+    },
+    {
+        name: 'Dev.to',
+        icon: <FaDev size={24} />,
+        url: 'https://dev.to/abhishek_sharma_a9792aee8',
+    },
+    {
+        name: 'Substack',
+        icon: <SiSubstack size={24} />,
+        url: 'https://substack.com/@abhisheksharma539226',
+    },
+];
 
 const Contact = () => {
-    const { theme } = useTheme();
-
-    const socialLinks = [
-        {
-            name: 'Github',
-            icon: <FaGithub size="30" />,
-            url: 'https://github.com/coderstarter',
-            color: theme === 'light' ? 'hover:text-gray-800' : 'hover:text-gray-300'
-        },
-        {
-            name: 'LinkedIn',
-            icon: <FaLinkedin size="30" />,
-            url: 'https://www.linkedin.com/in/abhishek-sharma-688566151/',
-            color: 'hover:text-blue-600'
-        },
-        {
-            name: 'Twitter',
-            icon: <FaSquareXTwitter size="30" />,
-            url: 'https://twitter.com/yourusername',
-            color: 'hover:text-blue-400'
-        },
-        {
-            name: 'Instagram',
-            icon: <FaInstagramSquare size="30" />,
-            url: 'https://www.instagram.com/yourusername',
-            color: 'hover:text-pink-600'
-        }
-    ];
+    const scrollTop = () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    };
 
     return (
-        <div className={`min-h-[calc(100vh-1rem)] py-16 px-4 sm:px-6 lg:px-8 
-            ${theme === 'light' 
-                ? 'bg-gradient-to-b from-blue-50 to-white' 
-                : 'bg-gradient-to-b from-gray-900 to-gray-800'}`}>
-            <div className="max-w-4xl mx-auto flex flex-col items-center relative">
-                {/* Decorative elements */}
-                <div className={`absolute -z-10 top-0 right-0 w-72 h-72 
-                    ${theme === 'light' ? 'bg-blue-100' : 'bg-gray-700'} 
-                    rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob`}>
-                </div>
-                <div className={`absolute -z-10 bottom-0 left-0 w-72 h-72 
-                    ${theme === 'light' ? 'bg-indigo-100' : 'bg-gray-600'} 
-                    rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-2000`}>
-                </div>
+        <section className="px-4 pt-24 sm:px-6 lg:px-8">
+            <div className="mx-auto max-w-6xl">
+                <SectionHeading number="06" title="Let's talk" />
 
-                {/* Main content */}
-                <h1 className={`text-4xl md:text-5xl font-bold mb-12 
-                    bg-clip-text text-transparent bg-gradient-to-r 
-                    ${theme === 'light' 
-                        ? 'from-blue-600 to-indigo-600' 
-                        : 'from-blue-400 to-indigo-400'} 
-                    animate-fade-in-down`}>
-                    Let's Talk
-                </h1>
+                <div className="mx-auto max-w-2xl pb-24 text-center">
+                    <Reveal delay={0.1}>
+                        <p className="text-lg leading-relaxed text-soft">
+                            I'm on the lookout for exciting new opportunities, and my inbox is
+                            always open. Whether you have a question or just want to say hello,
+                            I'll do my best to get back to you — promptly, and with a smile.
+                        </p>
+                    </Reveal>
 
-                <p className={`text-lg md:text-2xl ${theme === 'light' ? 'text-gray-700' : 'text-gray-300'} 
-                    text-center mb-12 leading-relaxed transform hover:scale-105 
-                    transition-all duration-300 border-l-4 
-                    ${theme === 'light' ? 'border-blue-500' : 'border-blue-400'} 
-                    pl-4 backdrop-blur-sm`}>
-                    I'm on the lookout for exciting new opportunities and my inbox is eagerly waiting 
-                    for your message! Whether you have a burning question or simply want to drop a 
-                    friendly 'hello,' don't hesitate to reach out. I'll make sure to respond promptly 
-                    and with a smile!
-                </p>
-
-                {/* Email button */}
-                <a 
-                    href="mailto:absep98@gmail.com" 
-                    className={`group relative inline-flex items-center justify-center px-8 py-4 
-                        text-lg font-medium overflow-hidden transition-all duration-300 ease-in-out
-                        transform hover:scale-105 mb-16
-                        ${theme === 'light' 
-                            ? 'text-blue-600 border-2 border-blue-600' 
-                            : 'text-blue-400 border-2 border-blue-400'} 
-                        rounded-full`}
-                >
-                    <span className={`absolute inset-0 w-full h-full transform scale-x-0 
-                        group-hover:scale-x-100 transition-transform duration-300 ease-out origin-left
-                        ${theme === 'light' ? 'bg-blue-600' : 'bg-blue-400'}`}>
-                    </span>
-                    <span className="relative group-hover:text-white">Say Hello</span>
-                </a>
-
-                {/* Social links */}
-                <div className="flex flex-wrap justify-center gap-8 md:gap-12">
-                    {socialLinks.map((social, index) => (
-                        <a 
-                            key={index}
-                            href={social.url} 
-                            target="_blank" 
-                            rel="noopener noreferrer"
-                            className={`group flex flex-col items-center gap-2 
-                                transform hover:scale-110 transition-all duration-300 
-                                ${social.color} ${theme === 'light' ? 'text-gray-600' : 'text-gray-400'}`}
+                    <Reveal delay={0.2}>
+                        <a
+                            href="mailto:absep98@gmail.com"
+                            className="mt-10 inline-block border border-accent px-10 py-4 font-mono text-sm font-semibold text-accent transition-colors duration-300 hover:bg-accent hover:text-paper"
                         >
-                            <span className="transform group-hover:-translate-y-1 transition-transform duration-300">
-                                {social.icon}
-                            </span>
-                            <span className={`text-sm font-medium ${theme === 'light' ? 'text-gray-700' : 'text-gray-300'}`}>
-                                {social.name}
-                            </span>
+                            absep98@gmail.com
                         </a>
-                    ))}
+                    </Reveal>
+
+                    <Reveal delay={0.3}>
+                        <div className="mt-12 flex justify-center gap-8">
+                            {socialLinks.map((social) => (
+                                <a
+                                    key={social.name}
+                                    href={social.url}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    aria-label={social.name}
+                                    className="flex flex-col items-center gap-2 text-soft transition-colors hover:text-accent"
+                                >
+                                    {social.icon}
+                                    <span className="font-mono text-xs">{social.name}</span>
+                                </a>
+                            ))}
+                        </div>
+                    </Reveal>
                 </div>
             </div>
-        </div>
+
+            {/* Footer */}
+            <footer className="border-t border-line py-8">
+                <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-3 px-4 sm:flex-row sm:px-6 lg:px-8">
+                    <p className="m-0 font-mono text-xs text-soft">
+                        © {new Date().getFullYear()} Abhishek Sharma
+                    </p>
+                    <p className="m-0 font-mono text-xs text-soft">
+                        Built with React & Tailwind CSS
+                    </p>
+                </div>
+            </footer>
+
+            {/* Scroll to top */}
+            <button
+                onClick={scrollTop}
+                aria-label="Scroll to top"
+                className="group fixed bottom-8 right-8 z-30 border border-line bg-raised p-3 text-soft shadow-lg transition-all duration-300 hover:border-accent hover:text-accent"
+            >
+                <FaArrowAltCircleUp size={20} className="transition-transform duration-300 group-hover:-translate-y-0.5" />
+            </button>
+        </section>
     )
 }
 

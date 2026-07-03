@@ -1,44 +1,113 @@
 import React from 'react';
-import { useTheme } from '../Components/Context/ThemeContext';
+import { motion } from 'framer-motion';
+import { FaGithub, FaLinkedin } from 'react-icons/fa';
+import { Link as ScrollLink } from 'react-scroll';
+
+const stagger = {
+  hidden: {},
+  show: { transition: { staggerChildren: 0.12, delayChildren: 0.15 } },
+};
+
+const item = {
+  hidden: { opacity: 0, y: 28 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.65, ease: [0.21, 0.47, 0.32, 0.98] } },
+};
 
 function Home() {
-  const { theme } = useTheme();
-
   return (
-    <div className={`font-poppins min-h-[calc(100vh-6rem)] flex justify-center items-center px-4 sm:px-6 lg:px-8 mt-8 ${theme === 'light' ? 'bg-gradient-to-b from-white to-blue-200' : 'bg-gradient-to-b from-gray-900 to-gray-800'}`}>
-      <div className="max-w-4xl w-full space-y-8 p-4 sm:p-8 md:p-12 lg:p-16 relative">
-        {/* Decorative elements */}
-        <div className={`absolute -z-10 top-0 right-0 w-72 h-72 ${theme === 'light' ? 'bg-blue-100' : 'bg-gray-700'} rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob`}></div>
-        <div className={`absolute -z-10 top-0 left-0 w-72 h-72 ${theme === 'light' ? 'bg-indigo-100' : 'bg-gray-600'} rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-2000`}></div>
-        
-        <p className={`text-xl sm:text-2xl font-semibold ${theme === 'light' ? 'text-blue-700' : 'text-gray-300'} tracking-wide transform hover:scale-105 transition-transform duration-300 cursor-default`}>
-          Hi, My name is
-        </p>
-        
-        <h1 className={`text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold bg-clip-text text-transparent bg-gradient-to-r ${theme === 'light' ? 'from-blue-600 to-indigo-600' : 'from-gray-400 to-gray-500'} hover:from-indigo-600 hover:to-blue-600 transition-all duration-500 animate-fade-in-down`}>
-          Abhishek Sharma
-        </h1>
-        
-        <h2 className={`text-xl sm:text-2xl font-bold relative inline-block before:content-[''] before:absolute before:w-full before:scale-x-0 before:h-1 before:bottom-0 before:left-0 ${theme === 'light' ? 'before:bg-blue-500' : 'before:bg-gray-500'} before:origin-right before:transition-transform before:duration-300 hover:before:scale-x-100 hover:before:origin-left`}>
-          Building things for fun and learning
-        </h2>
-        
-        <h3 className={`text-base sm:text-lg ${theme === 'light' ? 'text-gray-700' : 'text-gray-300'} max-w-3xl leading-relaxed transform hover:scale-105 transition-all duration-300 border-l-4 ${theme === 'light' ? 'border-blue-500' : 'border-gray-500'} pl-4 backdrop-blur-sm`}>
-          "I'm a software engineer deeply passionate about crafting exceptional digital experiences. 
-          Currently in a dynamic learning phase, I'm exploring various aspects of development, 
-          with a particular interest in backend technologies. Eager to absorb new knowledge and 
-          grow with every project."
-        </h3>
+    <section className="relative flex min-h-[calc(100vh-4.5rem)] items-center overflow-hidden">
+      {/* Oversized watermark initials */}
+      <span
+        aria-hidden="true"
+        className="pointer-events-none absolute -right-8 top-1/2 -translate-y-1/2 select-none font-display text-[16rem] font-bold leading-none text-ink opacity-[0.04] md:text-[26rem]"
+      >
+        AS
+      </span>
 
-        {/* Floating elements */}
-        <div className={`absolute -z-10 right-10 bottom-10 animate-bounce-slow opacity-20 ${theme === 'light' ? 'border-blue-500' : 'border-gray-500'}`}>
-          <div className="w-16 h-16 border-4 rounded-full"></div>
-        </div>
-        <div className={`absolute -z-10 left-10 top-10 animate-spin-slow opacity-20 ${theme === 'light' ? 'border-indigo-500' : 'border-gray-500'}`}>
-          <div className="w-12 h-12 border-4 rotate-45"></div>
-        </div>
-      </div>
-    </div>
+      <motion.div
+        variants={stagger}
+        initial="hidden"
+        animate="show"
+        className="mx-auto w-full max-w-6xl px-4 py-20 sm:px-6 lg:px-8"
+      >
+        <motion.p variants={item} className="mb-6 font-mono text-sm text-accent">
+          {'// backend engineer · bengaluru, india'}
+        </motion.p>
+
+        <motion.h1
+          variants={item}
+          className="font-display text-5xl font-semibold leading-[1.05] tracking-tight sm:text-6xl md:text-7xl lg:text-8xl"
+        >
+          Abhishek
+          <br />
+          Sharma<span className="text-accent">.</span>
+        </motion.h1>
+
+        <motion.h2
+          variants={item}
+          className="mt-6 font-display text-2xl font-medium italic text-soft sm:text-3xl"
+        >
+          I build things for fun and learning.
+        </motion.h2>
+
+        <motion.p variants={item} className="mt-8 max-w-xl text-lg leading-relaxed text-soft">
+          Backend engineer with 4.5 years of experience building production-grade
+          systems at scale — deep in Go and Python, integrating AI at Citrix for
+          products serving 1M+ users, and shipping side projects from a published
+          Chrome extension to a production-ready Go API.
+        </motion.p>
+
+        <motion.div variants={item} className="mt-10 flex flex-wrap items-center gap-5">
+          <ScrollLink
+            to="projects"
+            smooth={true}
+            duration={500}
+            offset={-72}
+            className="cursor-pointer border border-ink bg-ink px-7 py-3 text-sm font-semibold text-paper transition-colors duration-300 hover:bg-transparent hover:text-ink"
+          >
+            See my work
+          </ScrollLink>
+          <ScrollLink
+            to="contact"
+            smooth={true}
+            duration={500}
+            offset={-72}
+            className="cursor-pointer border border-line px-7 py-3 text-sm font-semibold text-ink transition-colors duration-300 hover:border-accent hover:text-accent"
+          >
+            Get in touch
+          </ScrollLink>
+          <span className="hidden h-px w-10 bg-line sm:block" />
+          <a
+            href="https://github.com/absep98"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="GitHub"
+            className="text-soft transition-colors hover:text-accent"
+          >
+            <FaGithub size={22} />
+          </a>
+          <a
+            href="https://www.linkedin.com/in/abhishek-sharma-688566151/"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="LinkedIn"
+            className="text-soft transition-colors hover:text-accent"
+          >
+            <FaLinkedin size={22} />
+          </a>
+        </motion.div>
+      </motion.div>
+
+      {/* Scroll cue */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1.4, duration: 0.8 }}
+        className="absolute bottom-8 left-1/2 -translate-x-1/2"
+      >
+        <div className="h-12 w-px animate-pulse bg-gradient-to-b from-transparent via-accent to-transparent" />
+      </motion.div>
+    </section>
   );
 }
 

@@ -1,116 +1,82 @@
 import React, { useState } from 'react'
 import { HiChevronRight } from 'react-icons/hi'
-import { useTheme } from '../Components/Context/ThemeContext';
+import { Reveal, SectionHeading } from './Shared';
+
+const experiences = {
+    citrix: {
+        company: "Citrix Systems",
+        title: "Software Engineer",
+        period: "May 2023 — Present · Bengaluru",
+        duties: [
+            "Built an AI-powered Jenkins log analyzer integrating Claude Code with the Slack API — turns raw nightly CI failures into per-category bug tickets with deduplication and structured Slack summaries, cutting engineer triage time from hours to minutes.",
+            "Developed an Azure OpenAI + Playwright automation framework orchestrated by the GPT-4 Computer Use API — eliminated 83% of manual testing cycles across the Citrix admin portal with self-healing browser automation.",
+            "Shipped new admin UI capabilities into NetScaler Gateway serving enterprise customers globally — Device Posture Service as a first-class auth factor, EDT Lossy ICA params, Custom Portal Theme CSS and Advanced Policy controls — with parallel backports across the 13.1 and 14.1 release trains.",
+            "Optimized React + Redux admin UI components, improving dashboard performance by 40% and cutting load time by 1.2 seconds; authored the Citrix Workspace theme for the admin portal.",
+            "Resolved critical CSA script failures reducing login failures by 35% for 1M+ users, migrated JavaScript libraries cutting security vulnerabilities by 30%, and automated CI/CD pipelines via Jenkins reducing release cycle time by 40%."
+        ]
+    },
+    juniper: {
+        company: "Juniper Networks",
+        title: "Software Engineer 2",
+        period: "Jul 2021 — May 2023 · Bengaluru",
+        duties: [
+            "Built a Negative Event API using Python and Flask enabling 200+ automated test scenarios — clean REST API contracts, structured error responses and comprehensive edge-case coverage for network event handling across MX device deployments.",
+            "Enhanced bandwidth monitoring and telemetry reporting features for MX devices — designed, implemented and shipped production-tested backend functionality.",
+            "Modernized the automation stack by migrating 50+ legacy scripts to Python with parallel execution support, reducing test cycle time by 35%."
+        ]
+    }
+};
 
 const Experience = () => {
     const [activeTab, setActiveTab] = useState('citrix');
-    const { theme } = useTheme();
-
-    const experiences = {
-        citrix: {
-            company: "Citrix Systems",
-            title: "Software Engineer",
-            period: "May 2023 - Present",
-            duties: [
-                "Working on Admin UI Portal delivering the features and fixing the critical bugs from the customer.",
-                "Enhancing the regression and working on moving the On Prem infrastructure to cloud.",
-                "Maintaining the Sanity pipeline for Gateway."
-            ]
-        },
-        juniper2: {
-            company: "Juniper Networks",
-            title: "Software Engineer 2",
-            period: "November 2022 - May 2023",
-            duties: [
-                "Collaborated closely with the product manager at Juniper Networks on UI development, delivering features, and rigorously testing them within JCLOUD. JCLOUD, a software-as-a-service (SaaS) solution, serves as a crucial link between on-premises applications and network devices, facilitating seamless integration. My responsibilities encompassed working extensively on REST API testing using Postman and conducting UI testing using Selenium, ensuring the robustness and reliability of our solutions."
-            ]
-        },
-        juniper1: {
-            company: "Juniper Networks",
-            title: "Software Engineer",
-            period: "July 2021 - November 2022",
-            duties: [
-                "Developed the Automation Robert Framework and implemented the Negative Event API for the testing team, streamlining testing processes.",
-                "Contributed to the transition of Robot-written scripts to Python scripts, enhancing automation capabilities.",
-                "Spearheaded the enhancement of bandwidth usage tracking features integrated with MX devices.",
-                "Engaged in collaborative efforts with software engineers to design and evaluate application procedures, optimizing system efficiency."
-            ]
-        }
-    };
 
     return (
-        <div className={`min-h-[calc(100vh-7rem)] py-16 px-4 sm:px-6 lg:px-8 
-            ${theme === 'light' 
-                ? 'bg-gradient-to-b from-white to-blue-50' 
-                : 'bg-gradient-to-b from-gray-900 to-gray-800'}`}>
-            <div className="max-w-6xl mx-auto">
-                {/* Section Title */}
-                <h2 className={`text-3xl md:text-4xl font-bold mb-12 text-center bg-clip-text text-transparent 
-                    bg-gradient-to-r ${theme === 'light' 
-                        ? 'from-blue-600 to-indigo-600' 
-                        : 'from-blue-400 to-indigo-400'} animate-fade-in-down`}>
-                    Where I've Worked
-                </h2>
+        <section className="py-24 px-4 sm:px-6 lg:px-8">
+            <div className="mx-auto max-w-6xl">
+                <SectionHeading number="02" title="Where I've worked" />
 
-                {/* Experience Container */}
-                <div className="flex flex-col md:flex-row gap-8">
-                    {/* Tab Buttons */}
-                    <div className="md:w-1/4 flex md:flex-col overflow-x-auto md:overflow-x-visible">
-                        {Object.entries(experiences).map(([key, value]) => (
-                            <button
-                                key={key}
-                                onClick={() => setActiveTab(key)}
-                                className={`px-4 py-3 text-left font-mono text-sm whitespace-nowrap transition-all duration-300
-                                    ${theme === 'light' 
-                                        ? 'hover:bg-blue-50 hover:text-blue-600' 
-                                        : 'hover:bg-gray-800 hover:text-blue-400'} 
-                                    relative
-                                    ${activeTab === key 
-                                        ? theme === 'light'
-                                            ? 'text-blue-600 border-b-2 md:border-b-0 md:border-l-2 border-blue-600 bg-blue-50' 
-                                            : 'text-blue-400 border-b-2 md:border-b-0 md:border-l-2 border-blue-400 bg-gray-800'
-                                        : theme === 'light'
-                                            ? 'text-gray-600 border-b-2 md:border-b-0 md:border-l-2 border-gray-200'
-                                            : 'text-gray-400 border-b-2 md:border-b-0 md:border-l-2 border-gray-700'}`}
-                            >
-                                {value.company}
-                            </button>
-                        ))}
-                    </div>
+                <Reveal delay={0.1}>
+                    <div className="flex flex-col gap-8 md:flex-row md:gap-12">
+                        {/* Tab buttons */}
+                        <div className="no-scrollbar flex overflow-x-auto border-b border-line md:w-64 md:flex-col md:border-b-0 md:border-l">
+                            {Object.entries(experiences).map(([key, value]) => (
+                                <button
+                                    key={key}
+                                    onClick={() => setActiveTab(key)}
+                                    className={`whitespace-nowrap px-5 py-3 text-left font-mono text-sm transition-colors duration-300
+                                        ${activeTab === key
+                                            ? 'border-b-2 border-accent bg-accent-tint text-accent md:-ml-px md:border-b-0 md:border-l-2'
+                                            : 'text-soft hover:bg-accent-tint hover:text-ink'}`}
+                                >
+                                    {value.company}
+                                </button>
+                            ))}
+                        </div>
 
-                    {/* Content */}
-                    <div className="md:w-3/4">
-                        <div className="transform transition-all duration-300 hover:scale-[1.01]">
-                            <h3 className={`text-xl md:text-2xl font-bold mb-1 
-                                ${theme === 'light' ? 'text-gray-800' : 'text-gray-200'}`}>
-                                {experiences[activeTab].title}
-                            </h3>
-                            <h4 className={`text-lg mb-4 font-mono 
-                                ${theme === 'light' ? 'text-blue-600' : 'text-blue-400'}`}>
-                                {experiences[activeTab].company}
-                            </h4>
-                            <p className={`mb-4 font-mono 
-                                ${theme === 'light' ? 'text-gray-600' : 'text-gray-400'}`}>
-                                {experiences[activeTab].period}
-                            </p>
-                            <ul className="space-y-4">
-                                {experiences[activeTab].duties.map((duty, index) => (
-                                    <li key={index} 
-                                        className="flex gap-2 group transform transition-all duration-300 hover:translate-x-2">
-                                        <span className={theme === 'light' ? 'text-blue-500' : 'text-blue-400'}>
-                                            <HiChevronRight className="transform group-hover:translate-x-1 transition-transform mt-1.5" />
-                                        </span>
-                                        <span className={theme === 'light' ? 'text-gray-700' : 'text-gray-300'}>
-                                            {duty}
-                                        </span>
-                                    </li>
-                                ))}
-                            </ul>
+                        {/* Content */}
+                        <div className="flex-1" key={activeTab}>
+                            <div className="animate-fade-in-up">
+                                <h3 className="font-display text-2xl font-semibold text-ink">
+                                    {experiences[activeTab].title}
+                                    <span className="text-accent"> · {experiences[activeTab].company}</span>
+                                </h3>
+                                <p className="mt-2 font-mono text-sm text-soft">
+                                    {experiences[activeTab].period}
+                                </p>
+                                <ul className="mt-6 space-y-4 p-0">
+                                    {experiences[activeTab].duties.map((duty, index) => (
+                                        <li key={index} className="flex gap-3">
+                                            <HiChevronRight className="mt-1 shrink-0 text-accent" />
+                                            <span className="leading-relaxed text-soft">{duty}</span>
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
                         </div>
                     </div>
-                </div>
+                </Reveal>
             </div>
-        </div>
+        </section>
     )
 }
 

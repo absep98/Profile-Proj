@@ -1,85 +1,83 @@
 import MyImage from '../Data/image.jpg';
 import Pic from '../Data/pic.jpg';
 import { IoMdCloudDownload } from "react-icons/io";
-import { useState } from 'react';
-import { useTheme } from '../Components/Context/ThemeContext'; // Import the useTheme hook
+import { Reveal, SectionHeading } from './Shared';
+
+const facts = [
+  { label: 'Education', value: 'B.Tech IT, PSG College of Technology · GPA 8.28' },
+  { label: 'Currently', value: 'Software Engineer @ Citrix, Bengaluru' },
+  { label: 'Shipped', value: 'TabInsights (Chrome) & Markdown TTS (VS Code)' },
+  { label: 'Focus', value: 'Go, backend systems & AI integration' },
+];
 
 const MainCont = () => {
-  const [counter, setCounter] = useState(0);
-  const { theme } = useTheme(); // Use the theme context
-
-  const incrementer = () => {
-    setCounter(counter + 1);
-  }
-
   return (
-    <div className={`min-h-screen py-16 px-4 sm:px-6 lg:px-8 ${theme === 'light' ? 'bg-gradient-to-b from-blue-200 to-white' : 'bg-gradient-to-b from-gray-800 to-gray-900'}`}>
-      <div className="max-w-7xl mx-auto">
-        <div className="flex flex-col lg:flex-row gap-8 relative">
-          {/* Background decorative elements */}
-          <div className={`absolute -z-10 top-20 left-0 w-72 h-72 ${theme === 'light' ? 'bg-blue-100' : 'bg-gray-700'} rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob`}></div>
-          <div className={`absolute -z-10 bottom-0 right-0 w-72 h-72 ${theme === 'light' ? 'bg-indigo-100' : 'bg-gray-600'} rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-2000`}></div>
+    <section className="py-24 px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-6xl">
+        <SectionHeading number="01" title="About me" />
 
-          {/* Image Section */}
-          <div className="lg:w-1/3 flex justify-center lg:justify-start relative group">
-            <div className="relative w-[300px] h-[300px] sm:w-[350px] sm:h-[350px] transform hover:scale-105 transition-all duration-500">
-              <img 
-                src={MyImage} 
-                alt="Profile" 
-                className="w-full h-full object-cover rounded-2xl shadow-xl absolute inset-0 group-hover:opacity-0 transition-opacity duration-500" 
+        <div className="flex flex-col gap-12 lg:flex-row lg:gap-16">
+          {/* Photo with offset frame; second photo revealed on hover */}
+          <Reveal className="flex justify-center lg:w-2/5 lg:justify-start" delay={0.1}>
+            <div className="group relative mt-2 h-[300px] w-[280px] sm:h-[340px] sm:w-[320px]">
+              <div className="absolute inset-0 translate-x-4 translate-y-4 border border-accent transition-transform duration-500 group-hover:translate-x-2 group-hover:translate-y-2" />
+              <img
+                src={MyImage}
+                alt="Abhishek Sharma"
+                className="absolute inset-0 h-full w-full object-cover grayscale transition-all duration-500 group-hover:opacity-0"
               />
-              <img 
-                src={Pic} 
-                alt="Alternative Profile" 
-                className="w-full h-full object-cover rounded-2xl shadow-xl absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500" 
+              <img
+                src={Pic}
+                alt="Abhishek Sharma, alternate"
+                className="absolute inset-0 h-full w-full object-cover opacity-0 transition-opacity duration-500 group-hover:opacity-100"
               />
             </div>
-          </div>
+          </Reveal>
 
-          {/* Content Section */}
-          <div className="lg:w-2/3 space-y-8">
-            {/* About Me Section */}
-            <div className="space-y-4">
-              <h3 className={`text-4xl sm:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r ${theme === 'light' ? 'from-blue-600 to-indigo-600' : 'from-gray-400 to-gray-500'} animate-fade-in-down`}>
-                About Me
-              </h3>
-              <p className={`text-lg sm:text-xl ${theme === 'light' ? 'text-gray-700' : 'text-gray-300'} leading-relaxed transform hover:scale-105 transition-all duration-300 border-l-4 ${theme === 'light' ? 'border-blue-500' : 'border-gray-500'} pl-4 backdrop-blur-sm`}>
-                Experienced software engineer with a robust proficiency in Python, C++, Java, and JavaScript. 
-                Graduated with a degree in Information Technology from PSG College of Technology. 
-                Passionate about web development, Problem solving, AI, and enthusiastic about exploring 
-                new programming languages. Actively seeking opportunities to leverage my skills and 
-                contribute to impactful projects.
+          {/* Bio + facts + resume */}
+          <div className="space-y-10 lg:w-3/5">
+            <Reveal delay={0.15}>
+              <p className="text-lg leading-relaxed text-soft">
+                I'm a backend engineer with 4.5 years of experience building
+                production-grade systems at scale — strongest in{' '}
+                <span className="font-semibold text-ink">Go and Python</span>, with
+                real-world AI integration (Azure OpenAI, Claude Code) shipped at
+                Citrix for 1M+ users. I learn by building: a Chrome extension
+                published on the Web Store, a VS Code extension live on the
+                marketplace, and a Go REST API engineered to production standards.
+                I care about REST API design, system reliability and building
+                products that solve real problems.
               </p>
-            </div>
+            </Reveal>
 
-            {/* Internship Section */}
-            <div className="flex flex-col items-center sm:items-start space-y-2 transform hover:scale-105 transition-all duration-300">
-              <h4 className={`text-3xl sm:text-4xl font-bold ${theme === 'light' ? 'text-blue-600' : 'text-gray-400'}`}>02</h4>
-              <h2 className={`text-xl sm:text-2xl font-semibold ${theme === 'light' ? 'text-gray-700' : 'text-gray-300'}`}>
-                Internships Completed
-              </h2>
-            </div>
+            <Reveal delay={0.2}>
+              <dl className="grid grid-cols-1 gap-px overflow-hidden border border-line bg-line sm:grid-cols-2">
+                {facts.map((fact) => (
+                  <div key={fact.label} className="bg-raised p-5">
+                    <dt className="font-mono text-xs uppercase tracking-widest text-accent">
+                      {fact.label}
+                    </dt>
+                    <dd className="mt-2 m-0 font-medium text-ink">{fact.value}</dd>
+                  </div>
+                ))}
+              </dl>
+            </Reveal>
 
-            {/* Resume Section */}
-            <div className="flex flex-col sm:flex-row items-center justify-end gap-4">
-              <a 
-                href="https://drive.google.com/file/d/1jIoSbuR9JC3SFgrXlih-y8GE2LT_H4wK/view" 
-                rel="noreferrer" 
-                target="_blank" 
-                onClick={incrementer}
-                className={`group px-6 py-3 ${theme === 'light' ? 'bg-gradient-to-r from-blue-500 to-indigo-500' : 'bg-gradient-to-r from-gray-700 to-gray-600'} text-white rounded-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 flex items-center gap-2`}
+            <Reveal delay={0.25}>
+              <a
+                href="https://drive.google.com/file/d/1jIoSbuR9JC3SFgrXlih-y8GE2LT_H4wK/view"
+                rel="noreferrer"
+                target="_blank"
+                className="group inline-flex items-center gap-3 border border-ink bg-ink px-7 py-3 text-sm font-semibold text-paper transition-colors duration-300 hover:bg-transparent hover:text-ink"
               >
                 <span>Download Resume</span>
-                <IoMdCloudDownload className="text-xl group-hover:animate-bounce" />
+                <IoMdCloudDownload className="text-lg transition-transform group-hover:-translate-y-0.5" />
               </a>
-              <p className={`text-lg font-semibold ${theme === 'light' ? 'text-blue-600' : 'text-gray-400'}`}>
-                {counter}+ Downloads
-              </p>
-            </div>
+            </Reveal>
           </div>
         </div>
       </div>
-    </div>
+    </section>
   )
 }
 

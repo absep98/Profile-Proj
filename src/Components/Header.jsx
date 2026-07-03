@@ -1,89 +1,100 @@
 import React, { useState } from 'react';
 import { Link as ScrollLink } from 'react-scroll';
-import logo from '../Data/logo.png';
 import { useTheme } from '../Components/Context/ThemeContext';
-import { FaSun, FaMoon } from 'react-icons/fa';
+import { FiSun, FiMoon, FiMenu, FiX } from 'react-icons/fi';
 
+const navItems = [
+  { to: 'about', label: 'About', number: '01' },
+  { to: 'experience', label: 'Experience', number: '02' },
+  { to: 'projects', label: 'Projects', number: '03' },
+  { to: 'skills', label: 'Skills', number: '04' },
+  { to: 'volunteer', label: 'Volunteer', number: '05' },
+  { to: 'contact', label: 'Contact', number: '06' },
+];
 
 const Header = () => {
-  const [showLinks, setShowLinks] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
   const { theme, toggleTheme } = useTheme();
-  console.log(theme);
-  
+
   return (
-    <header className='bg-gradient-to-r from-blue-500 to-indigo-900 text-white p-4'>
-      <div className="container mx-auto flex justify-between items-center">
-        <div className='flex items-center gap-3'>
-          <img src={logo} alt="Logo" className='w-10 h-10' />
-          <h1 className="text-white text-2xl">My Portfolio</h1>
+    <header className="sticky top-0 z-40 border-b border-line bg-paper/80 backdrop-blur-md">
+      <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
+        <ScrollLink
+          to="home"
+          smooth={true}
+          duration={500}
+          className="cursor-pointer font-display text-xl font-semibold tracking-tight"
+        >
+          Abhishek<span className="text-accent">.</span>
+        </ScrollLink>
+
+        {/* Desktop nav */}
+        <nav className="hidden items-center gap-6 md:flex">
+          {navItems.map((item) => (
+            <ScrollLink
+              key={item.to}
+              to={item.to}
+              spy={true}
+              smooth={true}
+              duration={500}
+              offset={-72}
+              activeClass="!text-accent"
+              className="group cursor-pointer text-sm font-medium text-soft transition-colors hover:text-ink"
+            >
+              <span className="mr-1 font-mono text-xs text-accent opacity-0 transition-opacity group-hover:opacity-100">
+                {item.number}
+              </span>
+              {item.label}
+            </ScrollLink>
+          ))}
           <button
-          onClick={toggleTheme}
-          className="p-2 rounded-full bg-gray-200 dark:bg-gray-700"
-          aria-label="Toggle theme"
+            onClick={toggleTheme}
+            aria-label="Toggle theme"
+            className="ml-2 rounded-full border border-line p-2 text-soft transition-colors hover:border-accent hover:text-accent"
           >
-            {theme === 'dark' ? <FaSun className="text-yellow-500" /> : <FaMoon className="text-blue-800" />}
+            {theme === 'dark' ? <FiSun size={16} /> : <FiMoon size={16} />}
           </button>
-        </div>
+        </nav>
 
-        {/* Desktop menu */}
-        <div className="hidden md:flex space-x-4">
-          <ScrollLink className="scroll-link cursor-pointer" to="/" smooth={true} offset={-10}>About me</ScrollLink>
-          <ScrollLink className="scroll-link cursor-pointer" to="experience" smooth={true} offset={-50}>Experience</ScrollLink>
-          <ScrollLink className="scroll-link cursor-pointer" to="contact" smooth={true} offset={-130}>Contacts</ScrollLink>
-          <ScrollLink className="scroll-link cursor-pointer" to="projects" smooth={true} offset={-50}>Projects</ScrollLink>
-          <ScrollLink className="scroll-link cursor-pointer" to="skills" smooth={true} offset={-50}>Skills</ScrollLink>
-          <ScrollLink className="Scroll-link cursor-pointer" to="volunteer" smooth={true} offset={-50}>Volunteer</ScrollLink>
-        </div>
-
-        {/* Mobile menu button */}
-        <div className="md:hidden">
+        {/* Mobile controls */}
+        <div className="flex items-center gap-3 md:hidden">
           <button
-            className="text-white text-2xl focus:outline-none"
-            onClick={() => setShowLinks(!showLinks)}
+            onClick={toggleTheme}
+            aria-label="Toggle theme"
+            className="rounded-full border border-line p-2 text-soft"
           >
-            ☰
+            {theme === 'dark' ? <FiSun size={16} /> : <FiMoon size={16} />}
+          </button>
+          <button
+            onClick={() => setMenuOpen(!menuOpen)}
+            aria-label="Toggle menu"
+            className="rounded-full border border-line p-2 text-soft"
+          >
+            {menuOpen ? <FiX size={18} /> : <FiMenu size={18} />}
           </button>
         </div>
       </div>
 
-      {/* Mobile menu dropdown */}
-      {showLinks && (
-        <div className="md:hidden absolute right-0 mt-2 bg-gradient-to-r from-blue-500 to-indigo-900 rounded-lg shadow-lg">
-          <div className="flex flex-col items-start py-2 px-4 min-w-[150px]">
-            <ScrollLink 
-              className="scroll-link cursor-pointer hover:bg-blue-600 w-full py-2 px-4 rounded" 
-              to="/" 
-              smooth={true} 
-              offset={-10}
-            >
-              About me
-            </ScrollLink>
-            <ScrollLink 
-              className="scroll-link cursor-pointer hover:bg-blue-600 w-full py-2 px-4 rounded" 
-              to="experience" 
-              smooth={true} 
-              offset={-50}
-            >
-              Experience
-            </ScrollLink>
-            <ScrollLink 
-              className="scroll-link cursor-pointer hover:bg-blue-600 w-full py-2 px-4 rounded" 
-              to="contact" 
-              smooth={true} 
-              offset={-130}
-            >
-              Contacts
-            </ScrollLink>
-            <ScrollLink 
-              className="scroll-link cursor-pointer hover:bg-blue-600 w-full py-2 px-4 rounded" 
-              to="projects" 
-              smooth={true} 
-              offset={-50}
-            >
-              Projects
-            </ScrollLink>
+      {/* Mobile menu */}
+      {menuOpen && (
+        <nav className="border-t border-line bg-paper md:hidden">
+          <div className="flex flex-col px-4 py-2">
+            {navItems.map((item) => (
+              <ScrollLink
+                key={item.to}
+                to={item.to}
+                smooth={true}
+                duration={500}
+                offset={-72}
+                onClick={() => setMenuOpen(false)}
+                className="cursor-pointer border-b border-line py-3 text-sm font-medium text-soft last:border-b-0 hover:text-accent"
+              >
+                <span className="mr-2 font-mono text-xs text-accent">{item.number}</span>
+                {item.label}
+              </ScrollLink>
+            ))}
           </div>
-        </div>
+        </nav>
       )}
     </header>
   );
