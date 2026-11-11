@@ -7,9 +7,10 @@ const navItems = [
   { to: 'about', label: 'About', number: '01' },
   { to: 'experience', label: 'Experience', number: '02' },
   { to: 'projects', label: 'Projects', number: '03' },
-  { to: 'skills', label: 'Skills', number: '04' },
-  { to: 'volunteer', label: 'Volunteer', number: '05' },
-  { to: 'contact', label: 'Contact', number: '06' },
+  { to: 'writing', label: 'Writing', number: '04' },
+  { to: 'skills', label: 'Skills', number: '05' },
+  { to: 'volunteer', label: 'Volunteer', number: '06' },
+  { to: 'contact', label: 'Contact', number: '07' },
 ];
 
 const Header = () => {

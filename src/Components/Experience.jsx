@@ -8,11 +8,11 @@ const experiences = {
         title: "Software Engineer",
         period: "May 2023 — Present · Bengaluru",
         duties: [
-            "Built an AI-powered Jenkins log analyzer integrating Claude Code with the Slack API — turns raw nightly CI failures into per-category bug tickets with deduplication and structured Slack summaries, cutting engineer triage time from hours to minutes.",
-            "Developed an Azure OpenAI + Playwright automation framework orchestrated by the GPT-4 Computer Use API — eliminated 83% of manual testing cycles across the Citrix admin portal with self-healing browser automation.",
-            "Shipped new admin UI capabilities into NetScaler Gateway serving enterprise customers globally — Device Posture Service as a first-class auth factor, EDT Lossy ICA params, Custom Portal Theme CSS and Advanced Policy controls — with parallel backports across the 13.1 and 14.1 release trains.",
-            "Optimized React + Redux admin UI components, improving dashboard performance by 40% and cutting load time by 1.2 seconds; authored the Citrix Workspace theme for the admin portal.",
-            "Resolved critical CSA script failures reducing login failures by 35% for 1M+ users, migrated JavaScript libraries cutting security vulnerabilities by 30%, and automated CI/CD pipelines via Jenkins reducing release cycle time by 40%."
+            "AI agents & tooling: built an AI-powered Jenkins log analyzer (Claude Code + Slack API) that turns raw nightly CI failures into per-category bug tickets, with orchestrator fan-out, deduplication against existing issues and structured Slack summaries, cutting triage from hours to minutes. Also built Claude Code agents, skills, plugins and workflows for internal engineering automation.",
+            "LLM automation: developed an Azure OpenAI + Playwright framework orchestrated by the GPT-4 Computer Use API, with self-healing browser automation that eliminated 83% of manual testing cycles across the Citrix admin portal.",
+            "Product features: shipped admin capabilities into NetScaler Gateway for enterprise customers globally (Device Posture Service as an auth factor, EDT Lossy ICA params, Advanced Policy controls) and fixed production bugs for named enterprise accounts, with parallel backports across two release trains.",
+            "Scale & reliability: resolved critical CSA script failures, cutting login failures 35% for 1M+ users; automated Jenkins CI/CD pipelines, cutting release cycle time 40%; improved React dashboard performance 40%.",
+            "Cross-team: collaborated on multi-cloud Kubernetes provisioning (AWS EKS, Azure AKS, GCP GKE) with Terraform and Helm, and built and verified Go features (idle-connection timeout, JSON stats output, connection cap) for an internal test tool."
         ]
     },
     juniper: {

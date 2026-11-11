@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
 import { FaGithub, FaLinkedin, FaArrowAltCircleUp, FaDev } from "react-icons/fa";
 import { SiHashnode, SiSubstack } from "react-icons/si";
 import { Reveal, SectionHeading } from './Shared';
@@ -32,6 +33,15 @@ const socialLinks = [
 ];
 
 const Contact = () => {
+    const [showTop, setShowTop] = useState(false);
+
+    useEffect(() => {
+        const onScroll = () => setShowTop(window.scrollY > 600);
+        onScroll();
+        window.addEventListener('scroll', onScroll, { passive: true });
+        return () => window.removeEventListener('scroll', onScroll);
+    }, []);
+
     const scrollTop = () => {
         window.scrollTo({ top: 0, behavior: 'smooth' });
     };
@@ -39,14 +49,14 @@ const Contact = () => {
     return (
         <section className="px-4 pt-24 sm:px-6 lg:px-8">
             <div className="mx-auto max-w-6xl">
-                <SectionHeading number="06" title="Let's talk" />
+                <SectionHeading number="07" title="Let's talk" />
 
                 <div className="mx-auto max-w-2xl pb-24 text-center">
                     <Reveal delay={0.1}>
                         <p className="text-lg leading-relaxed text-soft">
-                            I'm on the lookout for exciting new opportunities, and my inbox is
-                            always open. Whether you have a question or just want to say hello,
-                            I'll do my best to get back to you — promptly, and with a smile.
+                            A backend or AI role, a bug in one of my extensions, an idea for
+                            a Claude Code plugin, or a disagreement with something I wrote:
+                            email is the fastest way to reach me, and I read all of it.
                         </p>
                     </Reveal>
 
@@ -86,19 +96,28 @@ const Contact = () => {
                         © {new Date().getFullYear()} Abhishek Sharma
                     </p>
                     <p className="m-0 font-mono text-xs text-soft">
-                        Built with React & Tailwind CSS
+                        Built with React & Tailwind CSS · last updated Nov 2026
                     </p>
                 </div>
             </footer>
 
-            {/* Scroll to top */}
-            <button
-                onClick={scrollTop}
-                aria-label="Scroll to top"
-                className="group fixed bottom-8 right-8 z-30 border border-line bg-raised p-3 text-soft shadow-lg transition-all duration-300 hover:border-accent hover:text-accent"
-            >
-                <FaArrowAltCircleUp size={20} className="transition-transform duration-300 group-hover:-translate-y-0.5" />
-            </button>
+            {/* Scroll to top: appears once you've scrolled past the hero */}
+            <AnimatePresence>
+                {showTop && (
+                    <motion.button
+                        key="top"
+                        onClick={scrollTop}
+                        aria-label="Scroll to top"
+                        initial={{ opacity: 0, y: 16, scale: 0.9 }}
+                        animate={{ opacity: 1, y: 0, scale: 1 }}
+                        exit={{ opacity: 0, y: 16, scale: 0.9 }}
+                        transition={{ duration: 0.25 }}
+                        className="group fixed bottom-8 right-8 z-30 border border-line bg-raised p-3 text-soft shadow-lg transition-colors duration-300 hover:border-accent hover:text-accent"
+                    >
+                        <FaArrowAltCircleUp size={20} className="transition-transform duration-300 group-hover:-translate-y-0.5" />
+                    </motion.button>
+                )}
+            </AnimatePresence>
         </section>
     )
 }

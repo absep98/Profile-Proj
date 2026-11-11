@@ -6,7 +6,7 @@ const Volunteer = () => {
   return (
     <section className="py-24 px-4 sm:px-6 lg:px-8">
       <div className="mx-auto max-w-6xl">
-        <SectionHeading number="05" title="Volunteering" />
+        <SectionHeading number="06" title="Volunteering" />
 
         <Reveal delay={0.1}>
           <div className="relative border border-line bg-raised p-8 md:p-12">
